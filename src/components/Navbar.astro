@@ -1,0 +1,237 @@
+---
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Results', href: '#results' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner container">
+    <a href="/" class="navbar-logo" aria-label="Doctor Smile home">
+      <svg viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+        <g transform="translate(0, 3)">
+          <path d="M22 4C18.5 2 15 3 13.5 5C12 3 8.5 2 5 4C1.5 6 0 10 1 14C2 18 4 24 6 30C7.5 35 8.5 40 10 42C11 43.5 12.5 43.5 13 42C13.5 40 13.5 36 13.5 33C13.5 36 13.5 40 14 42C14.5 43.5 16 43.5 17 42C18.5 40 19.5 35 21 30C23 24 25 18 26 14C27 10 25.5 6 22 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        </g>
+        <text x="36" y="24" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="currentColor" letter-spacing="-0.5">Doctor Smile</text>
+        <text x="36" y="40" font-family="Inter, sans-serif" font-size="7.5" font-weight="500" fill="currentColor" letter-spacing="3.5" text-transform="uppercase" opacity="0.5">DENTAL CLINIC</text>
+      </svg>
+    </a>
+
+    <div class="navbar-links" id="navLinks">
+      {navLinks.map((link) => (
+        <a href={link.href} class="navbar-link">{link.label}</a>
+      ))}
+    </div>
+
+    <a href="#contact" class="btn btn-primary navbar-cta">
+      Book Now
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+
+    <button class="navbar-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-inner">
+    {navLinks.map((link) => (
+      <a href={link.href} class="mobile-link">{link.label}</a>
+    ))}
+    <a href="#contact" class="btn btn-primary" style="margin-top: 20px; width: 100%; justify-content: center;">
+      Book Appointment
+    </a>
+  </div>
+</div>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 50) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+    lastScroll = currentScroll;
+  });
+  navToggle?.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    mobileMenu?.classList.toggle('open');
+    document.body.style.overflow = mobileMenu?.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle?.classList.remove('active');
+      mobileMenu?.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    transition: all 0.4s var(--ease-out-expo);
+    background: rgba(255, 255, 255, 0);
+  }
+
+  .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.04);
+  }
+
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .navbar-logo {
+    flex-shrink: 0;
+  }
+
+  .logo-svg {
+    height: 44px;
+    width: auto;
+    color: var(--color-black);
+    transition: color 0.3s;
+  }
+
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .navbar-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-gray);
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-blue);
+    transition: width 0.3s var(--ease-out-expo);
+  }
+
+  .navbar-link:hover {
+    color: var(--color-black);
+  }
+
+  .navbar-link:hover::after {
+    width: 100%;
+  }
+
+  .navbar-cta {
+    padding: 12px 28px;
+    font-size: 0.85rem;
+  }
+
+  .navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    z-index: 1001;
+  }
+
+  .navbar-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-black);
+    border-radius: 2px;
+    transition: all 0.3s var(--ease-out-expo);
+  }
+
+  .navbar-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navbar-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease-out-expo);
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mobile-menu-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 24px;
+  }
+
+  .mobile-link {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-black);
+    transition: color 0.3s;
+  }
+
+  .mobile-link:hover {
+    color: var(--color-blue);
+  }
+
+  @media (max-width: 900px) {
+    .navbar-links,
+    .navbar-cta {
+      display: none;
+    }
+
+    .navbar-toggle {
+      display: flex;
+    }
+
+    .mobile-menu {
+      display: block;
+    }
+  }
+</style>

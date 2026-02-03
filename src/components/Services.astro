@@ -1,0 +1,252 @@
+---
+const services = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-9 9c0 3.9 3.4 8.1 9 12 5.6-3.9 9-8.1 9-12a9 9 0 0 0-9-9z"/><path d="M12 7v5"/><path d="M9.5 9.5h5"/></svg>`,
+    title: "General Dentistry",
+    desc: "Comprehensive dental exams, cleanings, fillings, and preventive care to maintain your oral health.",
+    features: ["Dental Exams", "Professional Cleaning", "Fillings & Restorations"]
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+    title: "Dental Veneers",
+    desc: "Custom-crafted porcelain veneers for a flawless, natural-looking smile transformation.",
+    features: ["Porcelain Veneers", "Composite Bonding", "Smile Makeover"]
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`,
+    title: "Teeth Whitening",
+    desc: "Professional-grade whitening treatments that deliver dramatic, lasting results in a single visit.",
+    features: ["In-Office Whitening", "Take-Home Kits", "Lasting Results"]
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>`,
+    title: "Dental Implants",
+    desc: "Permanent tooth replacement with titanium implants that look, feel, and function like natural teeth.",
+    features: ["Single Implants", "Full Arch Solutions", "Same-Day Implants"]
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>`,
+    title: "Orthodontics",
+    desc: "Invisible aligners and modern braces for perfectly aligned teeth without compromising your lifestyle.",
+    features: ["Clear Aligners", "Ceramic Braces", "Retention Plans"]
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+    title: "Oral Surgery",
+    desc: "Expert surgical procedures including wisdom teeth extraction and complex dental reconstructions.",
+    features: ["Wisdom Teeth", "Bone Grafting", "Jaw Surgery"]
+  },
+];
+---
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <span class="section-label reveal">Our Services</span>
+        <h2 class="section-title reveal reveal-delay-1">Comprehensive Dental<br/>Solutions</h2>
+      </div>
+      <p class="section-subtitle reveal reveal-delay-2">
+        From preventive care to advanced cosmetic procedures,
+        we offer a full spectrum of dental services under one roof.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service, i) => (
+        <div class={`service-card reveal reveal-delay-${(i % 3) + 1}`}>
+          <div class="service-icon" set:html={service.icon} />
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-desc">{service.desc}</p>
+          <ul class="service-features">
+            {service.features.map(f => (
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <div class="service-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: var(--section-padding) 0;
+    background: var(--color-gray-lighter);
+    position: relative;
+  }
+
+  .services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-gray-border), transparent);
+  }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 72px;
+    gap: 40px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .service-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-border);
+    border-radius: 20px;
+    padding: 36px;
+    position: relative;
+    transition: all 0.4s var(--ease-out-expo);
+    cursor: default;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+
+  .service-card:hover {
+    border-color: rgba(37, 99, 235, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+  }
+
+  .service-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--color-blue-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    transition: all 0.4s var(--ease-out-expo);
+  }
+
+  .service-card:hover .service-icon {
+    background: var(--color-blue);
+  }
+
+  .service-icon :global(svg) {
+    width: 24px;
+    height: 24px;
+    color: var(--color-blue);
+    transition: color 0.4s var(--ease-out-expo);
+  }
+
+  .service-card:hover .service-icon :global(svg) {
+    color: var(--color-white);
+  }
+
+  .service-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .service-desc {
+    font-size: 0.92rem;
+    color: var(--color-gray);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .service-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .service-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-black-soft);
+  }
+
+  .service-features svg {
+    width: 16px;
+    height: 16px;
+    color: var(--color-blue);
+    flex-shrink: 0;
+  }
+
+  .service-arrow {
+    position: absolute;
+    top: 36px;
+    right: 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-gray-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s var(--ease-out-expo);
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+
+  .service-card:hover .service-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .service-arrow svg {
+    width: 16px;
+    height: 16px;
+    color: var(--color-blue);
+  }
+
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .services-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
