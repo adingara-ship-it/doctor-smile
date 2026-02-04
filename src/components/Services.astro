@@ -76,6 +76,7 @@ const services = [
 </section>
 
 <style>
+  /* ── Base (mobile) ── */
   .services {
     padding: var(--section-padding) 0;
     background: var(--color-gray-lighter);
@@ -94,23 +95,22 @@ const services = [
 
   .services-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 72px;
-    gap: 40px;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
   }
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .service-card {
     background: var(--color-white);
     border: 1px solid var(--color-gray-border);
-    border-radius: 20px;
-    padding: 36px;
+    border-radius: 16px;
+    padding: 28px;
     position: relative;
     transition: all 0.4s var(--ease-out-expo);
     cursor: default;
@@ -141,14 +141,14 @@ const services = [
   }
 
   .service-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
     background: var(--color-blue-subtle);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     transition: all 0.4s var(--ease-out-expo);
   }
 
@@ -157,8 +157,8 @@ const services = [
   }
 
   .service-icon :global(svg) {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     color: var(--color-blue);
     transition: color 0.4s var(--ease-out-expo);
   }
@@ -168,48 +168,48 @@ const services = [
   }
 
   .service-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--color-black);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     letter-spacing: -0.01em;
   }
 
   .service-desc {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     color: var(--color-gray);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     line-height: 1.6;
   }
 
   .service-features {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
   .service-features li {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.85rem;
+    gap: 8px;
+    font-size: 0.82rem;
     font-weight: 500;
     color: var(--color-black-soft);
   }
 
   .service-features svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     color: var(--color-blue);
     flex-shrink: 0;
   }
 
   .service-arrow {
     position: absolute;
-    top: 36px;
-    right: 36px;
-    width: 36px;
-    height: 36px;
+    top: 28px;
+    right: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: var(--color-gray-lighter);
     display: flex;
@@ -226,27 +226,96 @@ const services = [
   }
 
   .service-arrow svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     color: var(--color-blue);
   }
 
-  @media (max-width: 1024px) {
+  /* ── Small tablet (sm) ── */
+  @media (min-width: 640px) {
     .services-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
-  }
 
-  @media (max-width: 900px) {
     .services-header {
-      flex-direction: column;
-      align-items: flex-start;
+      gap: 24px;
     }
   }
 
-  @media (max-width: 640px) {
+  /* ── Tablet (md) ── */
+  @media (min-width: 768px) {
+    .services-header {
+      margin-bottom: 56px;
+    }
+
+    .service-card {
+      border-radius: 20px;
+      padding: 36px;
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+    }
+
+    .service-icon :global(svg) {
+      width: 24px;
+      height: 24px;
+    }
+
+    .service-title {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+
+    .service-features {
+      gap: 10px;
+    }
+
+    .service-features li {
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+
+    .service-features svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .service-arrow {
+      top: 36px;
+      right: 36px;
+      width: 36px;
+      height: 36px;
+    }
+
+    .service-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  /* ── Desktop (lg) ── */
+  @media (min-width: 1024px) {
+    .services-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      margin-bottom: 72px;
+    }
+
     .services-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
     }
   }
 </style>

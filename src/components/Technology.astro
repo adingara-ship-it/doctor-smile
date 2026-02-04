@@ -33,22 +33,23 @@
 </section>
 
 <style>
+  /* ── Base (mobile) ── */
   .technology {
     padding: 0 0 var(--section-padding);
   }
 
   .tech-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
-    gap: 20px;
-    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .tech-card {
     position: relative;
-    border-radius: 20px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: default;
+    height: 240px;
   }
 
   .tech-img {
@@ -69,7 +70,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 32px;
+    padding: 24px;
     transition: background 0.4s;
   }
 
@@ -79,40 +80,70 @@
 
   .tech-tag {
     display: inline-block;
-    padding: 4px 12px;
+    padding: 4px 10px;
     background: rgba(37, 99, 235, 0.8);
     border-radius: 6px;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: white;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     width: fit-content;
   }
 
   .tech-overlay h3 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: white;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     letter-spacing: -0.01em;
   }
 
   .tech-overlay p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.5;
     max-width: 280px;
   }
 
-  @media (max-width: 900px) {
+  /* ── Small tablet (sm) ── */
+  @media (min-width: 640px) {
+    .tech-card {
+      height: 280px;
+    }
+  }
+
+  /* ── Tablet (md) ── */
+  @media (min-width: 768px) {
     .tech-grid {
-      grid-template-columns: 1fr;
-      height: auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 20px;
+      height: 400px;
     }
 
     .tech-card {
-      height: 280px;
+      height: auto;
+      border-radius: 20px;
+    }
+
+    .tech-overlay {
+      padding: 32px;
+    }
+
+    .tech-tag {
+      padding: 4px 12px;
+      font-size: 0.7rem;
+      margin-bottom: 12px;
+    }
+
+    .tech-overlay h3 {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+    }
+
+    .tech-overlay p {
+      font-size: 0.85rem;
     }
   }
 </style>

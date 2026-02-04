@@ -81,6 +81,7 @@ const testimonials = [
 </section>
 
 <style>
+  /* ── Base (mobile) ── */
   .testimonials {
     padding: var(--section-padding) 0;
     background: var(--color-black);
@@ -112,21 +113,21 @@ const testimonials = [
   }
 
   .testimonials-header {
-    margin-bottom: 64px;
+    margin-bottom: 40px;
   }
 
   .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-bottom: 64px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
   }
 
   .testimonial-card {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 36px;
+    border-radius: 16px;
+    padding: 28px;
     transition: all 0.4s var(--ease-out-expo);
   }
 
@@ -139,32 +140,32 @@ const testimonials = [
   .testimonial-stars {
     display: flex;
     gap: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .testimonial-stars svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     color: #FBBF24;
   }
 
   .testimonial-text {
-    font-size: 1.02rem;
+    font-size: 0.92rem;
     color: rgba(255, 255, 255, 0.75);
-    line-height: 1.75;
-    margin-bottom: 24px;
+    line-height: 1.7;
+    margin-bottom: 20px;
     font-style: italic;
   }
 
   .testimonial-author {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
   }
 
   .testimonial-avatar {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: var(--color-blue);
     display: flex;
@@ -172,68 +173,138 @@ const testimonials = [
     justify-content: center;
     color: white;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .testimonial-name {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-white);
   }
 
   .testimonial-role {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--color-gray);
   }
 
+  /* Trust bar */
   .trust-bar {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 32px;
-    padding: 32px;
+    gap: 16px;
+    padding: 28px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 16px;
-    flex-wrap: wrap;
+    border-radius: 12px;
   }
 
   .trust-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   .trust-item svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     color: var(--color-blue-light);
   }
 
   .trust-item span {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
   }
 
   .trust-divider {
-    width: 1px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    display: none;
   }
 
-  @media (max-width: 768px) {
-    .testimonials-grid {
-      grid-template-columns: 1fr;
+  /* ── Tablet (md) ── */
+  @media (min-width: 768px) {
+    .testimonials-header {
+      margin-bottom: 64px;
     }
 
-    .trust-divider {
-      display: none;
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    .testimonial-card {
+      border-radius: 20px;
+      padding: 36px;
+    }
+
+    .testimonial-stars svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .testimonial-stars {
+      margin-bottom: 20px;
+    }
+
+    .testimonial-text {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      gap: 14px;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      font-size: 1rem;
+    }
+
+    .testimonial-name {
+      font-size: 0.95rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
     }
 
     .trust-bar {
-      flex-direction: column;
-      gap: 16px;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 32px;
+      border-radius: 16px;
+    }
+
+    .trust-divider {
+      display: block;
+      width: 1px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .trust-item svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .trust-item span {
+      font-size: 0.85rem;
+    }
+
+    .trust-item {
+      gap: 10px;
+    }
+  }
+
+  /* ── Desktop (lg) ── */
+  @media (min-width: 1024px) {
+    .trust-bar {
+      gap: 32px;
     }
   }
 </style>
